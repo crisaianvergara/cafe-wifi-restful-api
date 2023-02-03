@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
+import os
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
+app.config["SECRET_KEY"] = os.environ.get("FLASK_SECRET_KEY")
 ##Connect to Database
 app.app_context().push()
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cafes.db"
